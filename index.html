@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MedConceal: a benchmark for clinical hidden-concern reasoning under partial observability. 300 curated cases, two interactive tasks, and a human clinician reference.">
+  <meta name="theme-color" content="#08685d">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="MedConceal · COLM 2026">
+  <meta property="og:description" content="Can AI uncover what patients leave unsaid? A benchmark for eliciting and addressing hidden concerns in clinical dialogue.">
+  <title>MedConceal | Clinical Hidden-Concern Reasoning</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%2308685d'/%3E%3Cpath d='M9 28V12l11 11 11-11v16' fill='none' stroke='white' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="wordmark" href="#"><span class="brand-mark" aria-hidden="true">M</span> MedConceal</a>
+      <div class="nav-links"><a href="#overview">Overview</a><a href="#benchmark">Benchmark</a><a href="#results">Results</a><a href="#citation">Cite</a></div>
+      <a class="nav-paper" href="assets/medconceal-paper.pdf" target="_blank" rel="noopener">Paper <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hero container" aria-labelledby="paper-title">
+      <p class="venue">COLM 2026 <span>·</span> Research project</p>
+      <h1 id="paper-title"><span class="title-brand">MedConceal</span><span class="title-full">A Benchmark for Clinical Hidden-Concern<br class="desktop-break"> Reasoning Under Partial Observability</span></h1>
+      <p class="authors"><span><a href="mailto:yikunh2@illinois.edu">Yikun Han</a><sup>1</sup></span><span>Joey Chan<sup>1</sup></span><span>Jingyuan Chen<sup>1</sup></span><span>Mengting Ai<sup>1</sup></span><span>Simo Du<sup>2</sup></span><span><a href="mailto:yueg@illinois.edu">Yue Guo</a><sup>1</sup></span></p>
+      <p class="affiliations"><span><sup>1</sup> University of Illinois Urbana-Champaign</span><span><sup>2</sup> NYC Health + Hospitals/Jacobi</span></p>
+      <div class="resource-links">
+        <a class="button primary" href="assets/medconceal-paper.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8zM14 3v5h5M8 12h8M8 16h6"/></svg>Read the paper</a>
+        <a class="button" href="https://github.com/FAIRHealth/MedConceal" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5M14 4l-4 16"/></svg>Code &amp; resources</a>
+        <a class="button" href="https://huggingface.co/datasets/Eclipse42/MedConceal" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 4 16 4 16 0V5M4 12c0 4 16 4 16 0"/></svg>Dataset</a>
+      </div>
+      <p class="hero-question">Can AI uncover what patients <em>leave unsaid?</em></p>
+      <p class="hero-description">Clinical dialogue goes beyond medical knowledge. It requires discovering the fears,<br class="desktop-break"> beliefs, and practical barriers a patient has not yet shared.</p>
+      <div class="state-story" aria-label="The patient simulator tracks concerns from hidden to revealed to addressed">
+        <div class="state-step"><span class="step-number">01</span><div><span class="eyebrow">Partial observability</span><h2>Hidden</h2><p>The chart tells only part of the story.</p></div><span class="state-symbol hidden-symbol" aria-hidden="true">···</span></div>
+        <div class="state-step"><span class="step-number">02</span><div><span class="eyebrow">Confirmation</span><h2>Revealed</h2><p>Skillful questions surface the concern.</p></div><span class="state-symbol" aria-hidden="true">?</span></div>
+        <div class="state-step"><span class="step-number">03</span><div><span class="eyebrow">Intervention</span><h2>Addressed</h2><p>The response engages with the barrier.</p></div><span class="state-symbol" aria-hidden="true">✓</span></div>
+      </div>
+      <div class="stats" aria-label="Benchmark at a glance"><div><strong>300</strong><span>curated patient cases</span></div><div><strong>159</strong><span>clinician participants</span></div><div><strong>5</strong><span>AI clinician baselines</span></div><div><strong>4</strong><span>hidden-concern categories</span></div></div>
+    </section>
+
+    <section id="overview" class="section container narrow" aria-labelledby="overview-title">
+      <p class="section-label">The research</p><h2 id="overview-title">Reasoning beyond the patient chart.</h2>
+      <div class="abstract"><h3>Research summary</h3><p>Patient-clinician communication is an asymmetric-information problem: patients often do not disclose fears, misconceptions, or practical barriers unless clinicians elicit them skillfully. MedConceal evaluates this challenge through an interactive patient simulator that separates clinician-visible context from simulator-internal hidden concerns.</p><p>Built from clinician-answered online health discussions, the benchmark comprises 300 curated cases. A reserved, stateful patient simulator tracks whether concerns have been revealed and addressed using theory-grounded, turn-level communication signals. Two tasks test complementary abilities: <strong>confirmation</strong>, surfacing hidden concerns through dialogue, and <strong>intervention</strong>, addressing the primary concern to support a target care plan.</p><p>Comparisons with 159 human clinician participants show that no single AI system leads across all metrics. Longer dialogues help some models, but effective interaction still depends on eliciting the right concern and responding to it. <a href="assets/medconceal-paper.pdf#page=1" target="_blank" rel="noopener">Read the full abstract ↗</a></p></div>
+    </section>
+
+    <section id="benchmark" class="section tinted" aria-labelledby="benchmark-title"><div class="container">
+      <div class="section-heading"><div><p class="section-label">Inside the benchmark</p><h2 id="benchmark-title">Same visible context.<br>Hidden concerns to discover.</h2></div><p>Human and AI clinicians see the same patient chart. The simulator keeps psychosocial concerns private until the interaction elicits them.</p></div>
+      <figure class="paper-figure"><a href="assets/framework.png" target="_blank" rel="noopener" aria-label="Open the full-size MedConceal framework figure"><img src="assets/framework.png" width="4593" height="2259" alt="MedConceal framework: clinician-answered AskDocs threads become structured cases with private concerns; human and AI clinicians interact with a stateful patient simulator in confirmation and intervention tasks." loading="lazy"></a><figcaption><span>Figure 1 from the paper.</span> Case construction, controlled disclosure, and matched-information human–AI evaluation. Select the figure to view it at full size.</figcaption></figure>
+      <div class="task-grid"><article><span class="task-index">Task 01</span><h3>Confirmation</h3><p>Surface hidden concerns through multi-turn dialogue, then submit structured findings. Evaluation separates what was actually revealed from what was inferred afterward.</p><p class="metric-list">Reveal Rate · Fine-grained F1 · Matched-but-no-reveal</p></article><article><span class="task-index">Task 02</span><h3>Intervention</h3><p>Address the primary hidden concern and guide the patient toward a target plan. Success requires the concern to reach the simulator’s addressed state.</p><p class="metric-list">Success · Reveal Rate · Turn-to-Address</p></article></div>
+      <div class="taxonomy"><h3>Four kinds of hidden concern</h3><ul><li><span>01</span>Misinformation or misconceptions</li><li><span>02</span>Emotional discomfort or fear</li><li><span>03</span>Communication barriers</li><li><span>04</span>Financial or insurance-related concern</li></ul></div>
+    </div></section>
+
+    <section class="section container case-section" aria-labelledby="case-title">
+      <div class="case-intro"><p class="section-label">A closer look</p><h2 id="case-title">The right plan starts<br>with the hidden barrier.</h2><p>In a case discussed in the paper, a knee injury is only part of the story. Cost and travel constraints change what a useful next step looks like.</p><p class="source-note">Paraphrased case from Section 4.3. This walkthrough illustrates the reported case; it is not a live simulation or a verbatim transcript.</p></div>
+      <div class="case-demo"><div class="case-top"><span class="eyebrow">Case walkthrough</span><span id="case-progress">1 / 3</span></div><div class="case-track" aria-label="Walkthrough steps"><button type="button" class="case-tab active" data-step="0" aria-pressed="true">Visible context</button><button type="button" class="case-tab" data-step="1" aria-pressed="false">Hidden concern</button><button type="button" class="case-tab" data-step="2" aria-pressed="false">Response</button></div><div class="case-content" aria-live="polite"><span class="case-stage" id="case-stage">What the clinician sees</span><h3 id="case-heading">A patient with a knee injury.</h3><p id="case-text">The clinical presentation suggests a need for further evaluation. But the visible problem does not explain what could prevent the patient from accessing care.</p><div class="case-insight" id="case-insight">A recommendation alone may miss the barrier.</div></div><button type="button" id="case-next" class="text-button">Reveal the hidden concern <span aria-hidden="true">→</span></button></div>
+    </section>
+
+    <section id="results" class="section results-section" aria-labelledby="results-title"><div class="container">
+      <div class="section-heading"><div><p class="section-label">What we found</p><h2 id="results-title">More dialogue helps.<br>What happens in it matters.</h2></div><p>Explore the reported results by task and turn budget. Human conversations averaged 8.2 turns; the extended AI setting is a separate condition.</p></div>
+      <div class="findings"><article><span class="finding-value">42.7<span>%</span></span><h3>Human intervention success</h3><p>Compared with 29.3% for the strongest 8-turn AI baseline, Claude Sonnet 4.5.</p></article><article><span class="finding-value">55.8<span>%</span></span><h3>Human confirmation reveal rate</h3><p>Higher than any 8-turn AI baseline; Claude Sonnet 4.5 reaches 52.2%.</p></article><article><span class="finding-value">11.164 <span>vs</span> 7.125</span><h3>Turns to address the concern</h3><p>Doctor-R1 at 20 turns ties human success, with a higher reported Turn-to-Address.</p></article></div>
+      <div class="results-panel"><div class="results-controls"><div class="segmented" role="group" aria-label="Evaluation task"><button type="button" data-task="intervention" class="active" aria-pressed="true">Intervention</button><button type="button" data-task="confirmation" aria-pressed="false">Confirmation</button></div><label class="budget-control" for="budget">AI turn budget <select id="budget"><option value="short">8 turns</option><option value="extended">Extended (up to 20)</option></select></label></div>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Results comparison table"><table><caption id="table-caption">Intervention performance · AI 8-turn setting</caption><thead><tr><th scope="col">System</th><th id="metric-primary" scope="col">Success ↑</th><th scope="col">Reveal Rate ↑</th><th id="metric-extra" scope="col">Turn-to-Address ↓</th></tr></thead><tbody id="results-body"><tr class="human-row"><th scope="row">Human clinicians <span>Reference</span></th><td>42.7%</td><td>48.7%</td><td>7.125</td></tr><tr><th scope="row">Claude Sonnet 4.5</th><td>29.3%</td><td>31.3%</td><td>5.239</td></tr><tr><th scope="row">Doctor-R1</th><td>15.0%</td><td>34.7%</td><td>6.938</td></tr><tr><th scope="row">GPT-5.2</th><td>7.7%</td><td>8.7%</td><td>5.043</td></tr><tr><th scope="row">Qwen-3.5-9B</th><td>3.0%</td><td>6.3%</td><td>6.333</td></tr><tr><th scope="row">Llama3-OpenBioLLM-8B</th><td>1.3%</td><td>1.3%</td><td>5.500</td></tr></tbody></table></div>
+        <p id="results-note" class="results-note" aria-live="polite">Success means the primary concern reached the simulator’s addressed state. Turn-to-Address records the first turn at which the primary concern becomes addressed. Human results are an observed reference, not an 8-turn-capped condition.</p>
+        <p class="table-source">Reported values from <a id="results-source" href="assets/medconceal-paper.pdf#page=8" target="_blank" rel="noopener">Table 3</a>. Displayed percentages are converted from the paper’s rounded proportions; no significance claim is implied.</p>
+      </div>
+      <figure class="trajectory-figure"><img src="assets/performance-over-turns.png" width="4164" height="1462" alt="Cumulative performance by dialogue turn: confirmation reveal rates and intervention success differ across AI models, compared against the final human reference and the mean human conversation length." loading="lazy"><figcaption><span>Figure 2 from the paper.</span> Dashed horizontal lines show final human reference performance; vertical dotted lines mark mean human conversation length.</figcaption></figure>
+      <aside class="takeaway"><span class="eyebrow">The takeaway</span><p>Probe before prescribing.<br><span>Condition the response on the concern actually elicited.</span></p><a href="assets/medconceal-paper.pdf#page=9" target="_blank" rel="noopener">Read the behavior analysis <span aria-hidden="true">↗</span></a></aside>
+    </div></section>
+
+    <section class="section container scope-section" aria-labelledby="scope-title"><div><p class="section-label">Scope</p><h2 id="scope-title">A controlled testbed<br>for a difficult interaction.</h2></div><div><p>MedConceal evaluates hidden-concern reasoning under a specific simulator and interaction protocol. It does not establish effectiveness in clinical deployment.</p><p>Concerns are reconstructed from patient-authored online text, rather than prospectively confirmed by patients. Intervention uses a single source-derived target plan, and outcomes depend on simulator state transitions. Prospective validation remains necessary.</p><a class="text-link" href="assets/medconceal-paper.pdf#page=10" target="_blank" rel="noopener">Limitations and future directions ↗</a></div></section>
+
+    <section id="citation" class="section citation-section" aria-labelledby="citation-title"><div class="container narrow"><div class="citation-heading"><div><p class="section-label">Build on this work</p><h2 id="citation-title">Citation</h2></div><button type="button" id="copy-citation" class="button">Copy BibTeX</button></div><pre tabindex="0" aria-label="BibTeX citation"><code id="bibtex">@inproceedings{han2026medconceal,
+  title = {MedConceal: A Benchmark for Clinical Hidden-Concern
+           Reasoning Under Partial Observability},
+  author = {Han, Yikun and Chan, Joey and Chen, Jingyuan and
+            Ai, Mengting and Du, Simo and Guo, Yue},
+  booktitle = {Conference on Language Modeling},
+  year = {2026}
+}</code></pre><p id="copy-status" role="status" class="copy-status"></p><a class="text-link" href="assets/medconceal.bib" download>Download .bib file ↓</a></div></section>
+  </main>
+  <footer class="footer container"><div><a class="wordmark" href="#"><span class="brand-mark" aria-hidden="true">M</span> MedConceal</a><p>Clinical hidden-concern reasoning under partial observability.</p></div><p>Page design inspired by <a href="https://nerfies.github.io/" target="_blank" rel="noopener">Nerfies</a>.<br>Paper content and figures belong to their respective authors.</p></footer>
+</body>
+</html>
