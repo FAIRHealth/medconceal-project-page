@@ -9,7 +9,7 @@
   <meta property="og:title" content="MedConceal · COLM 2026">
   <meta property="og:description" content="Can AI uncover what patients leave unsaid? A benchmark for eliciting and addressing hidden concerns in clinical dialogue.">
   <title>MedConceal | Clinical Hidden-Concern Reasoning</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%2308685d'/%3E%3Cpath d='M9 28V12l11 11 11-11v16' fill='none' stroke='white' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/png" href="assets/medconceal-logo-v2.png">
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
 </head>
@@ -17,14 +17,14 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <nav class="nav container" aria-label="Main navigation">
-      <a class="wordmark" href="#"><span class="brand-mark" aria-hidden="true">M</span> MedConceal</a>
+      <a class="wordmark" href="#"><img class="brand-mark" src="assets/medconceal-logo-v2.png" width="42" height="42" alt=""> MedConceal</a>
       <div class="nav-links"><a href="#overview">Overview</a><a href="#benchmark">Benchmark</a><a href="#results">Results</a><a href="#citation">Cite</a></div>
       <a class="nav-paper" href="assets/medconceal-paper.pdf" target="_blank" rel="noopener">Paper <span aria-hidden="true">↗</span></a>
     </nav>
   </header>
   <main id="main">
     <section class="hero container" aria-labelledby="paper-title">
-      <p class="venue">COLM 2026 <span>·</span> Research project</p>
+      <p class="venue">COLM 2026</p>
       <h1 id="paper-title"><span class="title-brand">MedConceal</span><span class="title-full">A Benchmark for Clinical Hidden-Concern<br class="desktop-break"> Reasoning Under Partial Observability</span></h1>
       <p class="authors"><span><a href="mailto:yikunh2@illinois.edu">Yikun Han</a><sup>1</sup></span><span>Joey Chan<sup>1</sup></span><span>Jingyuan Chen<sup>1</sup></span><span>Mengting Ai<sup>1</sup></span><span>Simo Du<sup>2</sup></span><span><a href="mailto:yueg@illinois.edu">Yue Guo</a><sup>1</sup></span></p>
       <p class="affiliations"><span><sup>1</sup> University of Illinois Urbana-Champaign</span><span><sup>2</sup> NYC Health + Hospitals/Jacobi</span></p>
@@ -56,7 +56,7 @@
     </div></section>
 
     <section class="section container case-section" aria-labelledby="case-title">
-      <div class="case-intro"><p class="section-label">A closer look</p><h2 id="case-title">The right plan starts<br>with the hidden barrier.</h2><p>In a case discussed in the paper, a knee injury is only part of the story. Cost and travel constraints change what a useful next step looks like.</p><p class="source-note">Paraphrased case from Section 4.3. This walkthrough illustrates the reported case; it is not a live simulation or a verbatim transcript.</p></div>
+      <div class="case-intro"><p class="section-label">A closer look</p><h2 id="case-title">The right plan starts<br>with the hidden barrier.</h2><p>In a case discussed in the paper, a knee injury is only part of the story. Cost and travel constraints change what a useful next step looks like.</p><p class="source-note">Paraphrased case from Section 4.3.</p></div>
       <div class="case-demo"><div class="case-top"><span class="eyebrow">Case walkthrough</span><span id="case-progress">1 / 3</span></div><div class="case-track" aria-label="Walkthrough steps"><button type="button" class="case-tab active" data-step="0" aria-pressed="true">Visible context</button><button type="button" class="case-tab" data-step="1" aria-pressed="false">Hidden concern</button><button type="button" class="case-tab" data-step="2" aria-pressed="false">Response</button></div><div class="case-content" aria-live="polite"><span class="case-stage" id="case-stage">What the clinician sees</span><h3 id="case-heading">A patient with a knee injury.</h3><p id="case-text">The clinical presentation suggests a need for further evaluation. But the visible problem does not explain what could prevent the patient from accessing care.</p><div class="case-insight" id="case-insight">A recommendation alone may miss the barrier.</div></div><button type="button" id="case-next" class="text-button">Reveal the hidden concern <span aria-hidden="true">→</span></button></div>
     </section>
 
@@ -66,7 +66,7 @@
       <div class="results-panel"><div class="results-controls"><div class="segmented" role="group" aria-label="Evaluation task"><button type="button" data-task="intervention" class="active" aria-pressed="true">Intervention</button><button type="button" data-task="confirmation" aria-pressed="false">Confirmation</button></div><label class="budget-control" for="budget">AI turn budget <select id="budget"><option value="short">8 turns</option><option value="extended">Extended (up to 20)</option></select></label></div>
         <div class="table-scroll" tabindex="0" role="region" aria-label="Results comparison table"><table><caption id="table-caption">Intervention performance · AI 8-turn setting</caption><thead><tr><th scope="col">System</th><th id="metric-primary" scope="col">Success ↑</th><th scope="col">Reveal Rate ↑</th><th id="metric-extra" scope="col">Turn-to-Address ↓</th></tr></thead><tbody id="results-body"><tr class="human-row"><th scope="row">Human clinicians <span>Reference</span></th><td>42.7%</td><td>48.7%</td><td>7.125</td></tr><tr><th scope="row">Claude Sonnet 4.5</th><td>29.3%</td><td>31.3%</td><td>5.239</td></tr><tr><th scope="row">Doctor-R1</th><td>15.0%</td><td>34.7%</td><td>6.938</td></tr><tr><th scope="row">GPT-5.2</th><td>7.7%</td><td>8.7%</td><td>5.043</td></tr><tr><th scope="row">Qwen-3.5-9B</th><td>3.0%</td><td>6.3%</td><td>6.333</td></tr><tr><th scope="row">Llama3-OpenBioLLM-8B</th><td>1.3%</td><td>1.3%</td><td>5.500</td></tr></tbody></table></div>
         <p id="results-note" class="results-note" aria-live="polite">Success means the primary concern reached the simulator’s addressed state. Turn-to-Address records the first turn at which the primary concern becomes addressed. Human results are an observed reference, not an 8-turn-capped condition.</p>
-        <p class="table-source">Reported values from <a id="results-source" href="assets/medconceal-paper.pdf#page=8" target="_blank" rel="noopener">Table 3</a>. Displayed percentages are converted from the paper’s rounded proportions; no significance claim is implied.</p>
+        <p class="table-source">Reported values from <a id="results-source" href="assets/medconceal-paper.pdf#page=8" target="_blank" rel="noopener">Table 3</a>.</p>
       </div>
       <figure class="trajectory-figure"><img src="assets/performance-over-turns.png" width="4164" height="1462" alt="Cumulative performance by dialogue turn: confirmation reveal rates and intervention success differ across AI models, compared against the final human reference and the mean human conversation length." loading="lazy"><figcaption><span>Figure 2 from the paper.</span> Dashed horizontal lines show final human reference performance; vertical dotted lines mark mean human conversation length.</figcaption></figure>
       <aside class="takeaway"><span class="eyebrow">The takeaway</span><p>Probe before prescribing.<br><span>Condition the response on the concern actually elicited.</span></p><a href="assets/medconceal-paper.pdf#page=9" target="_blank" rel="noopener">Read the behavior analysis <span aria-hidden="true">↗</span></a></aside>
@@ -83,6 +83,6 @@
   year = {2026}
 }</code></pre><p id="copy-status" role="status" class="copy-status"></p><a class="text-link" href="assets/medconceal.bib" download>Download .bib file ↓</a></div></section>
   </main>
-  <footer class="footer container"><div><a class="wordmark" href="#"><span class="brand-mark" aria-hidden="true">M</span> MedConceal</a><p>Clinical hidden-concern reasoning under partial observability.</p></div><p>Page design inspired by <a href="https://nerfies.github.io/" target="_blank" rel="noopener">Nerfies</a>.<br>Paper content and figures belong to their respective authors.</p></footer>
+  <footer class="footer container"><div><a class="wordmark" href="#"><img class="brand-mark" src="assets/medconceal-logo-v2.png" width="42" height="42" alt=""> MedConceal</a><p>Clinical hidden-concern reasoning under partial observability.</p></div><p>Page design inspired by <a href="https://nerfies.github.io/" target="_blank" rel="noopener">Nerfies</a>.<br>Paper content and figures belong to their respective authors.</p></footer>
 </body>
 </html>
