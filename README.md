@@ -6,6 +6,7 @@ Authors: Yikun Han, Joey Chan, Jingyuan Chen, Mengting Ai, Simo Du, and Yue Guo.
 
 ## Resources
 
+- [Project website](https://fairhealth.github.io/medconceal-project-page/)
 - [Benchmark code and resources](https://github.com/FAIRHealth/MedConceal)
 - [Dataset](https://huggingface.co/datasets/Eclipse42/MedConceal)
 - [Paper](assets/medconceal-paper.pdf)
